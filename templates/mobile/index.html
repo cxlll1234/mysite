@@ -1,0 +1,28 @@
+<!-- index.html mobile -->
+{% extends "mobile/base.html" %}
+{% block title %}测试手机卖场{% endblock %}
+{% block content %}
+<div class='container' align=center>
+{% for p in products %}
+{% if forloop.first %}
+<table class="table">
+  <tr bgcolor='$cccccc'>
+  <td width=250>库存手机</td>
+  <td width=150>品牌/型号</td>
+  <td width=50>出厂年份</td>
+  <td>价格</td></tr>
+  {% endif %}
+  <tr bgcolor='{% cycle "#ffccff" "ccfcc" %}'>
+  <td>{{ p.nickname }}</td>
+  <td>{{ p.pmodel.maker.name }}/{{ p.pmodel }}</td>
+  <td>{{ p.year }}</td>
+  <td align=right>{{ p.price }}</td>
+  </tr>
+  {% if forloop.last %}
+</table>
+{% endif %}
+{% empty %}
+<h3>暂时没有手机</h3>
+{% endfor %}
+</div> 
+{% endblock %}
