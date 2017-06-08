@@ -9,3 +9,12 @@ def index(request):
     products = models.Product.objects.all()
     html = template.render(locals())
     return HttpResponse(html)
+def detail(request,id):
+    try:
+        product = models.Product.objects.get(id=id)
+        images = models.PPhoto.objects.filter(product=product)
+    except:
+        pass
+    template= get_template('mobile/detail.html')
+    html = template.render(locals())
+    return HttpResponse(html)

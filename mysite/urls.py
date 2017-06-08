@@ -19,4 +19,5 @@ from mobile import views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',views.index),
+    url(r'^detail/(\d+)$',views.detail,name='detail-url')
 ]
